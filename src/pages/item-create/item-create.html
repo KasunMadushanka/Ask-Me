@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'ITEM_CREATE_TITLE' | translate }}</ion-title>
+    <ion-title>New Post</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary" showWhen="ios">
@@ -11,7 +11,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+      <button ion-button (click)="addpost()" [disabled]="!isReadyToSave" strong>
         <span color="primary" showWhen="ios">
           {{ 'DONE_BUTTON' | translate }}
         </span>
@@ -24,7 +24,7 @@
 
 
 <ion-content>
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+  <form (ngSubmit)="createItem()">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)"/>
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
@@ -37,10 +37,18 @@
     </div>
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
+        <ion-label>category</ion-label>
+        <ion-select [(ngModel)]="category" name="category">
+          <ion-option value="pri">Privacy</ion-option>
+          <ion-option value="enc">Encryption</ion-option>
+          <ion-option value="tru">Trust</ion-option>
+          <ion-option value="fre">Freedom of Support</ion-option>
+          <ion-option value="int">Intellectual Property</ion-option>
+          <ion-option value="eth">Ethics In Practice</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-textarea placeholder="Description" [(ngModel)]="description" name="category"></ion-textarea>
       </ion-item>
     </ion-list>
   </form>

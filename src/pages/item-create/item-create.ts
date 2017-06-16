@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NavController, ViewController } from 'ionic-angular';
 
 import { Camera } from 'ionic-native';
+import { PostService } from '../../providers/post-service';
 
 /*
   Generated class for the ItemCreate page.
@@ -22,12 +23,16 @@ export class ItemCreatePage {
   item: any;
 
   form: FormGroup;
+  category:string;
+  description:string;
+  post:any;
+  posts:any;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public postService:PostService) {
     this.form = formBuilder.group({
       profilePic: [''],
-      name: ['', Validators.required],
-      about: ['']
+      category: [''],
+      description: ['']
     });
 
     // Watch the form for changes, and
@@ -84,8 +89,20 @@ export class ItemCreatePage {
    * The user is done and wants to create the item, so return it
    * back to the presenter.
    */
-  done() {
-    if(!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+
+   addpost(){
+    this.post={category:this.category,description:this.description};
+    //console.log(this.waste);
+                this.postService.createpost(this.post).then((result) => {
+                        //  this.loading.dismiss();
+                          this.posts = result;
+                          //console.log("waste created");
+                        //  this.showAlert();
+                      }, (err) => {
+                          //this.loading.dismiss();
+                          console.log("not allowed");
+                      });
+
   }
+
 }

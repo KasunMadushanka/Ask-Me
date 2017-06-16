@@ -19,31 +19,37 @@ export class Items {
       {
          "name": "Privacy",
          "profilePic": "assets/img/categories/1.png",
+         "short":"pri",
 
        },
        {
          "name": "Encryption",
          "profilePic": "assets/img/categories/2.png",
+         "short":"enc",
 
        },
        {
          "name": "Trust",
          "profilePic": "assets/img/categories/3.png",
+         "short":"tru",
 
        },
        {
          "name": "Freedom of Speech",
          "profilePic": "assets/img/categories/4.png",
+         "short":"fre",
 
        },
        {
          "name": "Intellectual Property",
          "profilePic": "assets/img/categories/5.png",
+         "short":"int",
 
        },
        {
          "name": "Ethics in Practice",
          "profilePic": "assets/img/categories/6.png",
+         "short":"eth",
 
        },
 

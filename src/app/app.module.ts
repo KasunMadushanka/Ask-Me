@@ -19,6 +19,7 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
+import { CommentPage } from '../pages/comment/comment';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -71,7 +72,8 @@ let pages = [
     ItemCreatePage,
     MenuPage,
     SettingsPage,
-    SearchPage
+    SearchPage,
+    CommentPage
 ];
 
 export function declarations() {

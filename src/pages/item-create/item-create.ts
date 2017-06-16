@@ -4,6 +4,7 @@ import { NavController, ViewController } from 'ionic-angular';
 
 import { Camera } from 'ionic-native';
 import { PostService } from '../../providers/post-service';
+import { TabsPage } from '../tabs/tabs';
 
 /*
   Generated class for the ItemCreate page.
@@ -96,6 +97,8 @@ export class ItemCreatePage {
                 this.postService.createpost(this.post).then((result) => {
                         //  this.loading.dismiss();
                           this.posts = result;
+                          //console.log(this.posts);
+                          this.navCtrl.setRoot(TabsPage);
                           //console.log("waste created");
                         //  this.showAlert();
                       }, (err) => {

@@ -41,4 +41,25 @@ export class PostService {
 
   }
 
+
+  getcategoryDetails(category){
+
+        return new Promise((resolve,reject)=>{
+
+
+          let data={cat:category}
+          this.http.post(this.BASE_URI+'catposts', data)
+            .map(res => res.json())
+            .subscribe(res => {
+              resolve(res);
+              //console.log(res);
+            }, (err) => {
+              reject(err);
+            });
+
+
+      });
+
+      }
+
 }

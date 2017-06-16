@@ -41,6 +41,30 @@ export class PostService {
 
   }
 
+  //add comment
+  public addComment(com){
+      return new Promise((resolve, reject) => {
+       this.storage.get('token').then((value) => {
+
+       let id=value;
+       com.user=id;
+       let data=com;
+
+       this.http.post(this.BASE_URI+'addComment', data)
+         .map(res => res.json())
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+
+     });
+
+   });
+
+  }
+
+
 
   getcategoryDetails(category){
 
@@ -61,5 +85,27 @@ export class PostService {
       });
 
       }
+
+
+
+      getcommentDetails(postid){
+
+            return new Promise((resolve,reject)=>{
+
+
+              let data={postid:postid}
+              this.http.post(this.BASE_URI+'composts', data)
+                .map(res => res.json())
+                .subscribe(res => {
+                  resolve(res);
+                  //console.log(res);
+                }, (err) => {
+                  reject(err);
+                });
+
+
+          });
+
+          }
 
 }

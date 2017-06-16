@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Items } from '../../providers/providers';
 import { PostService } from '../../providers/post-service';
+import {CommentPage} from '../comment/comment';
 
 @Component({
     selector: 'page-item-detail',
@@ -58,6 +59,14 @@ export class ItemDetailPage {
         //         content: 'Encryption can be simple, like secret-key, or incredibly complex, like the Advanced Encryption Standard (AES), depending on the algorithm and the length of the key. The longer the key, the more protection, but also the more processing power required to handle the encrypting and decrypting process.'
         //     }
         // ];
+    }
+
+    loadComment(postid){
+      this.navCtrl.push(CommentPage,{
+    postId: postid
+});
+      //console.log(postid);
+
     }
 
 }

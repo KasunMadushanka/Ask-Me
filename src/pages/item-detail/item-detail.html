@@ -22,7 +22,7 @@
 <div>
     <ion-card *ngFor="let item of cardItems">
 
-        <ion-item>
+        <ion-item (click)="loadComment(item.postid)">
             <ion-avatar item-left>
                 <img src="assets/img/users/1.jpg">
             </ion-avatar>
@@ -30,7 +30,7 @@
             <!-- <p>{{item.date}}</p> -->
         </ion-item>
 
-        <img src="assets/img/posts/privacy/1.jpg">
+        <img src="assets/img/posts/privacy/1.jpg" (click)="loadComment(item.postid)">
 
         <ion-card-content>
             <p>{{item.description}}</p>

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {Platform, Nav, Config} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { AuthService } from '../providers/auth-service';
 
 import { Settings } from '../providers/providers';
 
@@ -24,7 +25,10 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+      <ion-card>
+        <ion-title>Ask me</ion-title>
+        <img src="assets/img/welcome1.jpg" height=80px/>
+        </ion-card>
       </ion-toolbar>
     </ion-header>
 
@@ -32,6 +36,9 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
           {{p.title}}
+        </button>
+        <button menuClose ion-item (click)="logout()">
+          logout
         </button>
       </ion-list>
     </ion-content>
@@ -45,21 +52,21 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: TutorialPage },
-    { title: 'Welcome', component: WelcomePage },
-    { title: 'Tabs', component: TabsPage },
-    { title: 'Cards', component: CardsPage },
-    { title: 'Home', component: HomePage },
-    { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
-    { title: 'Map', component: MapPage },
-    { title: 'Master Detail', component: ListMasterPage },
-    { title: 'Menu', component: MenuPage },
+    // { title: 'Tutorial', component: TutorialPage },
+    // { title: 'Welcome', component: WelcomePage },
+    // { title: 'Tabs', component: TabsPage },
+    // { title: 'Cards', component: CardsPage },
+    // { title: 'Home', component: HomePage },
+    // { title: 'Login', component: LoginPage },
+    // { title: 'Signup', component: SignupPage },
+    // { title: 'Map', component: MapPage },
+    // { title: 'Master Detail', component: ListMasterPage },
+    // { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
     { title: 'Search', component: SearchPage }
   ]
 
-  constructor(translate: TranslateService, platform: Platform, settings: Settings, config: Config) {
+  constructor(translate: TranslateService, platform: Platform, settings: Settings, config: Config,public authService:AuthService) {
     // Set the default language for translation strings, and the current language.
     translate.setDefaultLang('en');
     translate.use('en')
@@ -80,5 +87,13 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout(){
+    this.authService.logout().then(()=>{
+      this.nav.push(LoginPage);
+
+    });
+
   }
 }

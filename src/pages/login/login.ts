@@ -6,6 +6,7 @@ import {Http, Response} from '@angular/http';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
+import {Storage} from '@ionic/storage';
 
 @Component({
     selector: 'page-login',
@@ -23,6 +24,28 @@ export class LoginPage {
     constructor(public navCtrl: NavController,private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController,private formBuilder: FormBuilder, private http: Http) {
 
     }
+
+    ionViewDidLoad() {
+    this.showLoader();
+        //Check if already authenticated
+        this.auth.checkAuthentication().then((res) => {
+          console.log("success");
+            this.loading.dismiss();
+                this.navCtrl.setRoot(TabsPage);
+        }, (err) => {
+            //console.log("Not already authorized");
+            console.log("error");
+            this.loading.dismiss();
+        });
+
+    }
+
+    showLoader(){
+       this.loading = this.loadingCtrl.create({
+           content: 'Authenticating...'
+       });
+       this.loading.present();
+   }
 
     login(){
 

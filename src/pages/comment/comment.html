@@ -22,7 +22,7 @@
         <ion-input type="text" value="" name="cmnt" [(ngModel)]="cmnt"></ion-input>
       </ion-item>
       <ion-item>
-      <button ion-button (clcik)="addComment()">add</button>
+      <button ion-button (click)="addComment()">add</button>
     </ion-item>
     </ion-list>
   </form>
@@ -31,10 +31,10 @@
     <button ion-button clear item-end>Vote up</button>
     <button ion-button clear item-end>Vote down</button>
     <ion-thumbnail item-start>
-      <img src="img/thumbnail-totoro.png">
+      <img src="assets/img/users/1.jpg">
     </ion-thumbnail>
-    <h2>My Neighbor Totoro</h2>
-    <p>Hayao Miyazaki • 1xvcxxcv cxv xcv xc v xcv cx v cx v xc v c xv c xv cx v xc v cx v xc v cx v xc  v xcv  xc v xc v xcvxc v xcv988</p>
+    <h2>Description</h2>
+    <p>{{com.description}}</p>
 
   </ion-item>
 

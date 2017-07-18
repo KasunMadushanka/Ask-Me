@@ -12,8 +12,8 @@ import {Storage} from '@ionic/storage';
 @Injectable()
 export class PostService {
 
-  //  private  BASE_URI:String="http://askme07.azurewebsites.net/";
-    private  BASE_URI:String="http://localhost:8081/";
+   private  BASE_URI:String="http://askme07.azurewebsites.net/";
+    // private  BASE_URI:String="http://localhost:8081/";
 
   constructor(public http: Http, public storage:Storage) {
     console.log('Hello PostService Provider');

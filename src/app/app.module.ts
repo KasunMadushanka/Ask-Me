@@ -30,6 +30,11 @@ import { PostService } from '../providers/post-service';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: Http) {
@@ -91,6 +96,10 @@ export function providers() {
         Items,
         AuthService,
         PostService,
+        File,
+        Transfer,
+        Camera,
+        FilePath,
 
         { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
         // Keep this to enable Ionic's runtime error handling during development

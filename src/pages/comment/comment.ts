@@ -24,9 +24,10 @@ export class CommentPage {
 
     this.postService.getcommentDetails(this.post_id).then((result) => {
 
-          console.log("success");
+          console.log("comments");
           //this.navCtrl.push(Catdetails,result);
           this.comments=result;
+          console.log(this.comments);
       }, (err) => {
 
           console.log("error");

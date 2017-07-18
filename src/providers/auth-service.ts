@@ -22,8 +22,8 @@ export class AuthService {
 
     currentUser: User;
     public tok:any;
-  //  private  BASE_URI:String="http://askme07.azurewebsites.net/";
-    private  BASE_URI:String="http://localhost:8081/";
+   private  BASE_URI:String="http://askme07.azurewebsites.net/";
+    // private  BASE_URI:String="http://localhost:8081/";
 
     constructor(private http: Http,public storage: Storage) {
 

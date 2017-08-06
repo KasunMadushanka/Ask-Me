@@ -48,6 +48,18 @@ export class CommentPage {
 
   }
 
+  test(comid,rating){
+
+      //this.com={comment:this.cmnt,postid:this.post_id};
+      //console.log(this.waste);
+                  /*this.postService.updateRating(comid,rating).then((result) => {
+
+                        }, (err) => {
+                            //this.loading.dismiss();
+                            console.log("not allowed");
+                        });*/
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CommentPage');
   }

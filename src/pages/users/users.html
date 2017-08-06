@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Contributors</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item *ngFor="let user of users">
+            <ion-avatar item-left>
+                <img src="assets/img/users/1.jpg">
+            </ion-avatar>
+            <span>{{user.first_name}} {{user.last_name}}</span>
+            <rating [(ngModel)]="user.rating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

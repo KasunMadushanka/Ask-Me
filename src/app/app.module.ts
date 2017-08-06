@@ -20,6 +20,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { CommentPage } from '../pages/comment/comment';
+import { UsersPage } from '../pages/users/users';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -27,6 +28,8 @@ import { Settings } from '../providers/settings';
 import { Items } from '../mocks/providers/items';
 import { AuthService } from '../providers/auth-service';
 import { PostService } from '../providers/post-service';
+
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -78,7 +81,8 @@ let pages = [
     MenuPage,
     SettingsPage,
     SearchPage,
-    CommentPage
+    CommentPage,
+    UsersPage
 ];
 
 export function declarations() {
@@ -116,7 +120,8 @@ export function providers() {
             provide: TranslateLoader,
             useFactory: (createTranslateLoader),
             deps: [Http]
-        })
+        }),
+            Ionic2RatingModule
     ],
     bootstrap: [IonicApp],
     entryComponents: entryComponents(),

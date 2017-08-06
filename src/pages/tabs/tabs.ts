@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
+import { UsersPage } from '../users/users';
+import { WelcomePage } from '../welcome/welcome';
+import { SettingsPage } from '../settings/settings';
 
 import { Tab1Root } from '../pages';
 import { Tab2Root } from '../pages';
@@ -11,13 +14,13 @@ import { Tab3Root } from '../pages';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = Tab1Root;
-  tab2Root: any = Tab2Root;
-  tab3Root: any = Tab3Root;
+  tab1Root: any = WelcomePage;
+  tab2Root: any = UsersPage;
+  tab3Root: any = SettingsPage;
 
-  tab1Title = " ";
-  tab2Title = " ";
-  tab3Title = " ";
+  tab1Title = "TimeLine";
+  tab2Title = "Contributors";
+  tab3Title = "Settings";
 
   constructor(public navCtrl: NavController, public translateService: TranslateService) {
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {

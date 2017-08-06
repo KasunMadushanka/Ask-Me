@@ -47,7 +47,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage = TabsPage;
 
   @ViewChild(Nav) nav: Nav;
 

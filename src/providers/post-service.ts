@@ -4,108 +4,144 @@ import 'rxjs/add/operator/map';
 import {Storage} from '@ionic/storage';
 
 /*
-  Generated class for the PostService provider.
+Generated class for the PostService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+for more info on providers and Angular 2 DI.
 */
 @Injectable()
 export class PostService {
 
-   private  BASE_URI:String="http://askme07.azurewebsites.net/";
+    private  BASE_URI:String="http://askme07.azurewebsites.net/";
     // private  BASE_URI:String="http://localhost:8081/";
 
-  constructor(public http: Http, public storage:Storage) {
-    console.log('Hello PostService Provider');
-  }
+    constructor(public http: Http, public storage:Storage) {
+        console.log('Hello PostService Provider');
+    }
 
-  public createpost(post){
-      return new Promise((resolve, reject) => {
-       this.storage.get('token').then((value) => {
+    public createpost(post){
+        return new Promise((resolve, reject) => {
+            this.storage.get('token').then((value) => {
 
-       let id=value;
-       post.user=id;
-       let data=post;
+                let id=value;
+                post.user=id;
+                let data=post;
 
-       this.http.post(this.BASE_URI+'addPost', data)
-         .map(res => res.json())
-         .subscribe(res => {
-           resolve(res);
-         }, (err) => {
-           reject(err);
-         });
+                this.http.post(this.BASE_URI+'addPost', data)
+                .map(res => res.json())
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                });
 
-     });
+            });
 
-   });
+        });
 
-  }
+    }
 
-  //add comment
-  public addComment(com){
-      return new Promise((resolve, reject) => {
-       this.storage.get('token').then((value) => {
+    //add comment
+    public addComment(com){
+        return new Promise((resolve, reject) => {
+            this.storage.get('token').then((value) => {
 
-       let id=value;
-       com.user=id;
-       let data=com;
+                let id=value;
+                com.user=id;
+                let data=com;
 
-       this.http.post(this.BASE_URI+'addComment', data)
-         .map(res => res.json())
-         .subscribe(res => {
-           resolve(res);
-         }, (err) => {
-           reject(err);
-         });
+                this.http.post(this.BASE_URI+'addComment', data)
+                .map(res => res.json())
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                });
 
-     });
+            });
 
-   });
+        });
 
-  }
+    }
 
 
 
-  getcategoryDetails(category){
+    getcategoryDetails(category){
 
         return new Promise((resolve,reject)=>{
 
 
-          let data={cat:category}
-          this.http.post(this.BASE_URI+'catposts', data)
+            let data={cat:category}
+            this.http.post(this.BASE_URI+'catposts', data)
             .map(res => res.json())
             .subscribe(res => {
-              resolve(res);
-              //console.log(res);
+                resolve(res);
+                //console.log(res);
             }, (err) => {
-              reject(err);
+                reject(err);
             });
 
 
-      });
+        });
 
-      }
+    }
 
+    getUserDetails(){
 
+        return new Promise((resolve,reject)=>{
 
-      getcommentDetails(postid){
-
-            return new Promise((resolve,reject)=>{
-
-
-              let data={postid:postid}
-              this.http.post(this.BASE_URI+'composts', data)
-                .map(res => res.json())
-                .subscribe(res => {
-                  resolve(res);
-                  //console.log(res);
-                }, (err) => {
-                  reject(err);
-                });
+            this.http.post(this.BASE_URI+'users',null)
+            .map(res => res.json())
+            .subscribe(res => {
+                resolve(res);
+                //console.log(res);
+            }, (err) => {
+                reject(err);
+            });
 
 
-          });
+        });
 
-          }
+    }
+
+
+
+    getcommentDetails(postid){
+
+        return new Promise((resolve,reject)=>{
+
+
+            let data={postid:postid}
+            this.http.post(this.BASE_URI+'composts', data)
+            .map(res => res.json())
+            .subscribe(res => {
+                resolve(res);
+                //console.log(res);
+            }, (err) => {
+                reject(err);
+            });
+
+
+        });
+
+    }
+
+    updateRating(comid,rating){
+        console.log(comid+" "+rating)
+        return new Promise((resolve,reject)=>{
+
+            let data={comid:comid,rating:rating}
+            this.http.post(this.BASE_URI+'updateComment', data)
+            .map(res => res.json())
+            .subscribe(res => {
+                resolve(res);
+                //console.log(res);
+            }, (err) => {
+                reject(err);
+            });
+
+        });
+
+    }
 
 }

@@ -6,7 +6,7 @@ import {Http, Response} from '@angular/http';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
-import {Storage} from '@ionic/storage';
+//import {Storage} from '@ionic/storage';
 
 @Component({
     selector: 'page-login',
